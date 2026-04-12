@@ -4,6 +4,7 @@ import BatidasList from "@/components/BatidasList";
 import TipoSelector from "@/components/TipoSelector";
 import Toast from "@/components/Toast";
 import DownloadExtension from "@/components/DownloadExtension";
+import { getBatidas, postBatida, Batida } from "@/services/api";
 import { Fingerprint } from "lucide-react";
 
 const Index = () => {
