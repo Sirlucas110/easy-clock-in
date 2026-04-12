@@ -21,3 +21,15 @@ export async function postBatida(batida: Omit<Batida, "id">): Promise<Batida> {
   if (!res.ok) throw new Error("Erro ao registrar ponto");
   return res.json();
 }
+
+export interface Saldo {
+  mesAno: string;
+  saldoMinutos: number;
+  saldoFormatado: string;
+}
+
+export async function getSaldo(mesAno: string): Promise<Saldo> {
+  const res = await fetch(`${BASE_URL}/saldo?mesAno=${encodeURIComponent(mesAno)}`);
+  if (!res.ok) throw new Error("Erro ao buscar saldo");
+  return res.json();
+}
