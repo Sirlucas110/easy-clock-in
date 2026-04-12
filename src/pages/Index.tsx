@@ -81,6 +81,10 @@ const Index = () => {
           </div>
         </div>
 
+        <div className="mt-4">
+          <DownloadExtension />
+        </div>
+
         <p className="text-center text-xs text-muted-foreground mt-3">
           Extensão Chrome — Ponto Eletrônico v1.0
         </p>
