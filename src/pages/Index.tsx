@@ -3,7 +3,7 @@ import BaterPontoButton from "@/components/BaterPontoButton";
 import BatidasList from "@/components/BatidasList";
 import TipoSelector from "@/components/TipoSelector";
 import Toast from "@/components/Toast";
-import { getBatidas, postBatida, Batida } from "@/services/api";
+import DownloadExtension from "@/components/DownloadExtension";
 import { Fingerprint } from "lucide-react";
 
 const Index = () => {
