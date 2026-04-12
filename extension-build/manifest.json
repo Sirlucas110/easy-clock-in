@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Ponto Eletrônico",
+  "version": "1.0.0",
+  "description": "Registre seu ponto eletrônico com um clique",
+  "permissions": ["storage"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  "icons": {
+    "48": "icon.png",
+    "128": "icon.png"
+  }
+}
