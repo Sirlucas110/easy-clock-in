@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import BaterPontoButton from "@/components/BaterPontoButton";
 import BatidasList from "@/components/BatidasList";
 import TipoSelector from "@/components/TipoSelector";
+import SaldoWidget from "@/components/SaldoWidget";
 import Toast from "@/components/Toast";
 import { getBatidas, postBatida, Batida } from "@/services/api";
 
@@ -11,6 +12,7 @@ const ExtensionPopup = () => {
   const [listLoading, setListLoading] = useState(true);
   const [tipo, setTipo] = useState("entrada");
   const [toast, setToast] = useState<{ message: string; type: "success" | "error" } | null>(null);
+  const [saldoRefreshKey, setSaldoRefreshKey] = useState(0);
 
   const fetchBatidas = useCallback(async () => {
     try {
@@ -36,6 +38,7 @@ const ExtensionPopup = () => {
       });
       setToast({ message: "✅ Ponto registrado com sucesso!", type: "success" });
       await fetchBatidas();
+      setSaldoRefreshKey((k) => k + 1);
     } catch {
       setToast({ message: "❌ Erro ao registrar ponto", type: "error" });
     } finally {
@@ -69,6 +72,8 @@ const ExtensionPopup = () => {
       <div className="p-5 flex flex-col gap-4 flex-1">
         <TipoSelector value={tipo} onChange={setTipo} />
         <BaterPontoButton onClick={handleBaterPonto} loading={loading} tipo={tipo} />
+
+        <SaldoWidget refreshKey={saldoRefreshKey} />
 
         <div>
           <h2 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">
