@@ -7,10 +7,10 @@ interface BatidasListProps {
 }
 
 const tipoConfig: Record<string, { label: string; icon: typeof Clock; colorClass: string }> = {
-  entrada: { label: "Entrada", icon: LogIn, colorClass: "text-success" },
-  saida: { label: "Saída", icon: LogOut, colorClass: "text-destructive" },
-  intervalo: { label: "Intervalo", icon: Coffee, colorClass: "text-warning" },
-  retorno: { label: "Retorno", icon: RotateCcw, colorClass: "text-primary" },
+  ENTRADA: { label: "Entrada", icon: LogIn, colorClass: "text-success" },
+  SAIDA: { label: "Saída", icon: LogOut, colorClass: "text-destructive" },
+  INTERVALO: { label: "Intervalo", icon: Coffee, colorClass: "text-warning" },
+  RETORNO: { label: "Retorno", icon: RotateCcw, colorClass: "text-primary" },
 };
 
 function formatTime(timestamp: string): string {
