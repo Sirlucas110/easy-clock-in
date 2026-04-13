@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { getSaldo, Saldo } from "@/services/api";
+import SaldoService from "@/services/saldoService";
+import { SaldoResponse } from "@/types/saldo";
 import { Clock } from "lucide-react";
 
 interface SaldoWidgetProps {
