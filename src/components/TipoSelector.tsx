@@ -1,8 +1,8 @@
 const tipos = [
-  { value: "entrada", label: "Entrada" },
-  { value: "saida", label: "Saída" },
-  { value: "intervalo", label: "Intervalo" },
-  { value: "retorno", label: "Retorno" },
+  { value: "ENTRADA", label: "Entrada" },
+  { value: "SAIDA", label: "Saída" },
+  { value: "INTERVALO", label: "Intervalo" },
+  { value: "RETORNO", label: "Retorno" },
 ] as const;
 
 interface TipoSelectorProps {
