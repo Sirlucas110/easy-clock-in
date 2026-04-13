@@ -3,7 +3,7 @@ const BASE_URL = "http://localhost:3000";
 export interface Batida {
   id?: string;
   timestamp: string;
-  tipo: "entrada" | "saida" | "intervalo" | "retorno";
+  tipo: "ENTRADA" | "SAIDA" | "INTERVALO" | "RETORNO";
 }
 
 export async function getBatidas(): Promise<Batida[]> {
