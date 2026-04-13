@@ -1,8 +1,8 @@
-import { Batida } from "@/services/api";
+import { BatidaResponse } from "@/types/batida";
 import { Clock, LogIn, LogOut, Coffee, RotateCcw } from "lucide-react";
 
 interface BatidasListProps {
-  batidas: Batida[];
+  batidas: BatidaResponse[];
   loading: boolean;
 }
 

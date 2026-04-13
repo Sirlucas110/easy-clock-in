@@ -4,10 +4,11 @@ import BatidasList from "@/components/BatidasList";
 import TipoSelector from "@/components/TipoSelector";
 import SaldoWidget from "@/components/SaldoWidget";
 import Toast from "@/components/Toast";
-import { getBatidas, postBatida, Batida } from "@/services/api";
+import BatidaService from "@/services/batidaService";
+import { BatidaResponse } from "@/types/batida";
 
 const ExtensionPopup = () => {
-  const [batidas, setBatidas] = useState<Batida[]>([]);
+  const [batidas, setBatidas] = useState<BatidaResponse[]>([]);
   const [loading, setLoading] = useState(false);
   const [listLoading, setListLoading] = useState(true);
   const [tipo, setTipo] = useState("ENTRADA");
@@ -16,7 +17,7 @@ const ExtensionPopup = () => {
 
   const fetchBatidas = useCallback(async () => {
     try {
-      const data = await getBatidas();
+      const data = await BatidaService.listarBatidas();
       setBatidas(data);
     } catch {
       // silently fail
@@ -32,9 +33,9 @@ const ExtensionPopup = () => {
   const handleBaterPonto = async () => {
     setLoading(true);
     try {
-      await postBatida({
+      await BatidaService.registrarBatida({
         timestamp: new Date().toISOString(),
-        tipo: tipo as Batida["tipo"],
+        tipo: tipo as BatidaResponse["tipo"],
       });
       setToast({ message: "✅ Ponto registrado com sucesso!", type: "success" });
       await fetchBatidas();

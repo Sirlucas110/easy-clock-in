@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { getSaldo, Saldo } from "@/services/api";
+import SaldoService from "@/services/saldoService";
+import { SaldoResponse } from "@/types/saldo";
 import { Clock } from "lucide-react";
 
 interface SaldoWidgetProps {
@@ -17,14 +18,14 @@ function getMesReferenciaLabel(): string {
 }
 
 const SaldoWidget = ({ refreshKey }: SaldoWidgetProps) => {
-  const [saldo, setSaldo] = useState<Saldo | null>(null);
+  const [saldo, setSaldo] = useState<SaldoResponse | null>(null);
   const [erro, setErro] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setLoading(true);
     setErro(false);
-    getSaldo(getMesAnoAtual())
+    SaldoService.getSaldo(getMesAnoAtual())
       .then(setSaldo)
       .catch(() => setErro(true))
       .finally(() => setLoading(false));
