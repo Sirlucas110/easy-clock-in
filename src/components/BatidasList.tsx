@@ -43,7 +43,7 @@ const BatidasList = ({ batidas, loading }: BatidasListProps) => {
   return (
     <div className="flex flex-col gap-2">
       {batidas.map((batida, index) => {
-        const config = tipoConfig[batida.tipo] || tipoConfig.entrada;
+        const config = tipoConfig[batida.tipo] || tipoConfig.ENTRADA;
         const Icon = config.icon;
         return (
           <div
