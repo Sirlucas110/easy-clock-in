@@ -12,7 +12,7 @@ const Index = () => {
   const [batidas, setBatidas] = useState<Batida[]>([]);
   const [loading, setLoading] = useState(false);
   const [listLoading, setListLoading] = useState(true);
-  const [tipo, setTipo] = useState("entrada");
+  const [tipo, setTipo] = useState("ENTRADA");
   const [toast, setToast] = useState<{ message: string; type: "success" | "error" } | null>(null);
   const [saldoRefreshKey, setSaldoRefreshKey] = useState(0);
 
