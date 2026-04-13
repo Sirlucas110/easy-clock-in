@@ -7,10 +7,10 @@ interface BaterPontoButtonProps {
 }
 
 const tipoLabels: Record<string, string> = {
-  entrada: "Entrada",
-  saida: "Saída",
-  intervalo: "Intervalo",
-  retorno: "Retorno",
+  ENTRADA: "Entrada",
+  SAIDA: "Saída",
+  INTERVALO: "Intervalo",
+  RETORNO: "Retorno",
 };
 
 const BaterPontoButton = ({ onClick, loading, tipo }: BaterPontoButtonProps) => {
