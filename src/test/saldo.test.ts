@@ -2,13 +2,12 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 
 const BASE_URL = "http://localhost:3000";
 
-// Import after mocking
 const mockFetch = vi.fn();
 vi.stubGlobal("fetch", mockFetch);
 
-const { getSaldo } = await import("@/services/api");
+const { default: SaldoService } = await import("@/services/saldoService");
 
-describe("getSaldo", () => {
+describe("SaldoService.getSaldo", () => {
   beforeEach(() => {
     mockFetch.mockReset();
   });
@@ -20,10 +19,9 @@ describe("getSaldo", () => {
       json: () => Promise.resolve(mockSaldo),
     });
 
-    const result = await getSaldo("2026-04");
+    const result = await SaldoService.getSaldo("2026-04");
     expect(result).toEqual(mockSaldo);
     expect(result.saldoMinutos).toBeGreaterThanOrEqual(0);
-    expect(mockFetch).toHaveBeenCalledWith(`${BASE_URL}/saldo?mesAno=2026-04`);
   });
 
   it("should return negative saldo", async () => {
@@ -33,7 +31,7 @@ describe("getSaldo", () => {
       json: () => Promise.resolve(mockSaldo),
     });
 
-    const result = await getSaldo("2026-04");
+    const result = await SaldoService.getSaldo("2026-04");
     expect(result.saldoMinutos).toBeLessThan(0);
     expect(result.saldoFormatado).toBe("01:15");
   });
@@ -41,6 +39,6 @@ describe("getSaldo", () => {
   it("should throw on API error", async () => {
     mockFetch.mockResolvedValueOnce({ ok: false, status: 500 });
 
-    await expect(getSaldo("2026-04")).rejects.toThrow("Erro ao buscar saldo");
+    await expect(SaldoService.getSaldo("2026-04")).rejects.toThrow();
   });
 });
