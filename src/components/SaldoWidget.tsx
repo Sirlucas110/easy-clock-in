@@ -18,14 +18,14 @@ function getMesReferenciaLabel(): string {
 }
 
 const SaldoWidget = ({ refreshKey }: SaldoWidgetProps) => {
-  const [saldo, setSaldo] = useState<Saldo | null>(null);
+  const [saldo, setSaldo] = useState<SaldoResponse | null>(null);
   const [erro, setErro] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setLoading(true);
     setErro(false);
-    getSaldo(getMesAnoAtual())
+    SaldoService.getSaldo(getMesAnoAtual())
       .then(setSaldo)
       .catch(() => setErro(true))
       .finally(() => setLoading(false));
